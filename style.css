@@ -1,0 +1,110 @@
+/* style.css */
+
+/* 1. KUNCI MATI SCROLL DAN PAKSA CONTAINER MENJADI FLEXBOX TENGAH */
+html, body, .stApp, 
+[data-testid="stAppViewContainer"], 
+[data-testid="stMainBlockContainer"],
+[data-testid="stCanvasMainBlockContainer"],
+.main, .stMain, .stAppBlockContainer {
+    background-color: #0c64b4 !important;
+    overflow: hidden !important;
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+    max-height: 100vh !important;
+    height: 100vh !important;
+    width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Trik Utama: Memaksa block baris Streamlit otomatis berada di tengah-tengah monitor */
+div[data-testid="stHorizontalBlock"] {
+    display: flex !important;
+    align-items: center !important; /* Menengahkan secara Vertikal (Atas-Bawah) */
+    justify-content: center !important; /* Menengahkan secara Horizontal (Kiri-Kanan) */
+    height: 100vh !important; /* Memenuhi tinggi monitor */
+    margin: 0 auto !important;
+}
+
+/* Sembunyikan semua jenis scrollbar visual bawaan browser */
+::-webkit-scrollbar {
+    display: none !important;
+    width: 0px !important;
+    height: 0px !important;
+}
+* {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    box-sizing: border-box !important;
+}
+
+/* Sembunyikan total header dan footer bawaan Streamlit */
+header, footer, [data-testid="stHeader"] {
+    visibility: hidden !important;
+    display: none !important;
+    height: 0px !important;
+}
+
+/* 2. DESAIN KOTAK LOGIN (KOLOM TENGAH) */
+div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"]:nth-child(2) {
+    background-color: #a8c4ec !important;
+    padding: 30px 40px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25) !important;
+    min-width: 420px !important; /* Mengunci lebar kotak agar tidak kekecilan */
+}
+
+/* Hilangkan warna dan shadow dari kolom pembantu kiri dan kanan */
+div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"]:nth-child(1),
+div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"]:nth-child(3) {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+/* 3. ATUR KOMPONEN DI DALAM KOTAK LOGIN */
+div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"]:nth-child(2) [data-testid="stWidgetLabel"] {
+    margin-bottom: 2px !important;
+}
+
+div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"]:nth-child(2) label {
+    color: #ffffff !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+}
+
+div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"]:nth-child(2) input {
+    background-color: #d8d8d8 !important;
+    color: #333333 !important;
+    border: none !important;
+    border-radius: 2px !important;
+    height: 38px !important;
+}
+
+div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"]:nth-child(2) div[data-testid="InputWithAdornments"] {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"]:nth-child(2) button[data-testid="stInputFieldVisibilityToggle"] {
+    color: #333333 !important;
+}
+
+/* 4. TOMBOL LOGIN PRESISI TENGAH KOTAK */
+div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"]:nth-child(2) .stButton > button {
+    background-color: #0084ff !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 2px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    padding: 8px 50px !important;
+    width: auto !important;
+    display: block !important;
+    margin: 20px auto 0 auto !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15) !important;
+}
+
+div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"]:nth-child(2) .stButton > button:hover {
+    background-color: #0066cc !important;
+    color: #ffffff !important;
+}
